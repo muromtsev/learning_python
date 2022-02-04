@@ -32,7 +32,6 @@ def makeWidgets():
 
 def fetchRecord():
     key = entries['key'].get()
-    print(f"fetchRecord => {key}")
     try:
         record = db[key]
     except:
@@ -43,7 +42,6 @@ def fetchRecord():
             entries[field].insert(0, repr(getattr(record, field)))
 def updateRecord():
     key = entries['key'].get()
-    print(f"updateRecord => {key}")
     if key in db:
         record = db[key]
     else:
