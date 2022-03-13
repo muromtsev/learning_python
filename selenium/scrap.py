@@ -15,7 +15,7 @@ def get_source_html(search_word='bosch'):
     options = webdriver.ChromeOptions()
     options.add_argument("user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/99.0.4844.51 Safari/537.36")
 
-    driver = webdriver.Chrome(executable_path='C:\\Users\\ipozv\\OneDrive\\Рабочий стол\\selenium\\chromedirver\\chromedriver.exe', options=options)
+    driver = webdriver.Chrome(executable_path='C:\\Users\\ipozv\\OneDrive\\Рабочий стол\\git_projects\\learning_python\\selenium\\chromedriver\\chromedriver.exe', options=options)
     driver.maximize_window()
     url = f"https://www.avito.ru/volgograd/remont_i_stroitelstvo/instrumenty-ASgBAgICAURYoks?cd=1&q={search_word}"
 
@@ -24,7 +24,7 @@ def get_source_html(search_word='bosch'):
         driver.get(url)
         time.sleep(5)
 
-        with open(f"{search_word}.html", "w") as file:
+        with open(f"learning_python/selenium/{search_word}.html", "w") as file:
             file.write(driver.page_source)
     
     except Exception as ex:
@@ -46,7 +46,7 @@ def get_items_url(file_path):
         link = item.get("href")
         urls.append(link)
 
-    with open('links.txt', 'w') as file:
+    with open('learning_python/selenium/links.txt', 'w') as file:
         for url in urls:
             file.write(f"https://www.avito.ru/{url}\n")
     return "[INFO] COMPLETE!"
@@ -59,7 +59,7 @@ def get_data(file_path):
     urls_count = len(urls_list)
     count = 1
 
-    for url in urls_list[:3]:
+    for url in urls_list:
         response = requests.get(url=url, headers=headers)
         soup = BeautifulSoup(response.text, "html.parser")
         try:
@@ -102,24 +102,24 @@ def get_data(file_path):
                 "Description": item_descr
             }
         )
-        # time.sleep(random.randrange(2, 5))
+        time.sleep(random.randrange(2, 5))
 
-        # if count % 10 == 0:
-        #     time.sleep(random.randrange(3, 6))
+        if count % 10 == 0:
+            time.sleep(random.randrange(3, 6))
 
-        # print(f"[.] Processed: {count}/{urls_count}")
+        print(f"[.] Processed: {count}/{urls_count}")
 
-        # count += 1
+        count += 1
 
-    with open('result2.json', 'w') as file:
+    with open('learning_python/selenium/result.json', 'w') as file:
         json.dump(result_list, file, indent=4, ensure_ascii=False)
 
     return "[INFO] COMPLETE!"
 
 def main():
     # get_source_html(search_word='prebena')
-    # print(get_items_url('prebena.html'))
-    print(get_data('links.txt'))
+    # print(get_items_url('learning_python/selenium/prebena.html'))
+    print(get_data('learning_python/selenium/links.txt'))
 
 if __name__ == '__main__':
     main()
