@@ -2,7 +2,7 @@ import requests
 from selenium import webdriver
 import time
 from bs4 import BeautifulSoup
-import re
+import datetime
 import random
 import json
 
@@ -15,7 +15,7 @@ def get_source_html(search_word='bosch'):
     options = webdriver.ChromeOptions()
     options.add_argument("user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/99.0.4844.51 Safari/537.36")
 
-    driver = webdriver.Chrome(executable_path='C:\\Users\\ipozv\\OneDrive\\Рабочий стол\\git_projects\\learning_python\\selenium\\chromedriver\\chromedriver.exe', options=options)
+    driver = webdriver.Chrome(executable_path='C:\\Users\\ipozv\\OneDrive\\Рабочий стол\\learning_python\\selenium\\chromedriver\\chromedriver.exe', options=options)
     driver.maximize_window()
     url = f"https://www.avito.ru/volgograd/remont_i_stroitelstvo/instrumenty-ASgBAgICAURYoks?cd=1&q={search_word}"
 
@@ -24,7 +24,7 @@ def get_source_html(search_word='bosch'):
         driver.get(url)
         time.sleep(5)
 
-        with open(f"learning_python/selenium/{search_word}.html", "w") as file:
+        with open(f"selenium/{search_word}.html", "w") as file:
             file.write(driver.page_source)
     
     except Exception as ex:
@@ -34,6 +34,8 @@ def get_source_html(search_word='bosch'):
         driver.quit()
 
 def get_items_url(file_path):
+    now = datetime.datetime.now()
+    date_now = now.strftime("%d-%m-%Y")
     with open(file_path) as file:
         src = file.read()
     
@@ -46,7 +48,7 @@ def get_items_url(file_path):
         link = item.get("href")
         urls.append(link)
 
-    with open('learning_python/selenium/links.txt', 'w') as file:
+    with open(f'selenium/links-{date_now}.txt', 'w') as file:
         for url in urls:
             file.write(f"https://www.avito.ru/{url}\n")
     return "[INFO] COMPLETE!"
@@ -116,10 +118,22 @@ def get_data(file_path):
 
     return "[INFO] COMPLETE!"
 
+def set_links(file_path):
+    with open(file_path) as file:
+        urls_set = {url.strip() for url in file.readlines()}
+    return urls_set
+
+
 def main():
     # get_source_html(search_word='prebena')
-    # print(get_items_url('learning_python/selenium/prebena.html'))
-    print(get_data('learning_python/selenium/links.txt'))
+    # print(get_items_url('selenium/prebena.html'))
+    # print(get_data('learning_python/selenium/links.txt'))
+    old_set = set_links('selenium/links.txt')
+    now_set = set_links('selenium/links-15-03-2022.txt')
+    print(len(old_set))
+    print(len(now_set))
+    
+    print(old_set.difference(now_set))
 
 if __name__ == '__main__':
     main()
