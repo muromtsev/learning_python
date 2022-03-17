@@ -73,9 +73,9 @@ def get_data(file_path):
         except Exception as ex:
             item_name = None
         try: 
-            item_price = soup.find('span', class_='js-item-price').text.strip()
+            item_price = soup.find('span', class_='js-item-price').text.strip().replace('\xa0', '')
         except Exception as ex:
-            item_price = None
+            item_price = 0
         try: 
             item_params = soup.find_all('li', class_='item-params-list-item')
             item_brand = item_params[2].text.strip()
@@ -113,7 +113,7 @@ def get_data(file_path):
 
         count += 1
 
-    with open('learning_python/selenium/result.json', 'w') as file:
+    with open('selenium/result2.json', 'w') as file:
         json.dump(result_list, file, indent=4, ensure_ascii=False)
 
     return "[INFO] COMPLETE!"
@@ -127,8 +127,7 @@ def set_links(file_path):
 def main():
     # get_source_html(search_word='prebena')
     # print(get_items_url('selenium/prebena.html'))
-    # print(get_data('learning_python/selenium/links.txt'))
-    pass
+    print(get_data('selenium/links-15-03-2022.txt'))
 
 if __name__ == '__main__':
     main()
