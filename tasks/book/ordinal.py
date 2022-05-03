@@ -7,4 +7,4 @@ def is_ordinal(number):
 
 num = 3
 
-print(is_ordinal(num))
+# print(is_ordinal(num))
