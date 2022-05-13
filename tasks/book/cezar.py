@@ -1,8 +1,10 @@
 import string
 
-ABC = string.ascii_letters + ' '
-txt = 'encrypted message. The latter is encrypted with a Caesar cipher with a shift of three'
-step = 3
+ABC = string.ascii_lowercase
+print(ABC)
+# ABC = 'абвгдежзийклмнопрстуфхцчшщъыьэюя'
+# txt = 'Sgd fqzrr hr zkvzxr fqddmdq nm sgd nsgdq rhcd ne sgd edmbd'
+# step = 1
 
 def encryption(step, txt):
     ABC_WITH_STEP = ABC[step:] + ABC[:step]
@@ -23,11 +25,10 @@ def encryption(step, txt):
     
     return ''.join(new_list_index)
 
-print(encryption(step, txt))
+# print(encryption(step, txt))
 
 def decoding(step, txt):
     ABC_WITH_STEP = ABC[step:] + ABC[:step]
-
     list_txt_index = []
     for i in txt:
         for k, j in enumerate(ABC_WITH_STEP):
@@ -42,4 +43,6 @@ def decoding(step, txt):
     
     return ''.join(list_txt)
 
-# print(decoding(step, coding))
+s = decoding(3, 'Hawnj pk swhg xabkna ukq nqj')
+print(s)
+print('LEARN BEFORE YOU WORK'.lower())
