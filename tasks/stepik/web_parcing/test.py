@@ -103,10 +103,41 @@
 
 # print(f"Общая сумма артиклов: {sum}")
 
+from bs4 import BeautifulSoup
+import requests
+import time
 
+multi, result = 0, 0
 
+for menu_link in range(1, 6):
+    
+    print(f"Number link: {menu_link}")
 
+    for page in range(1, 5):
+        url = f"http://parsinger.ru/html/index{menu_link}_page_{page}.html"
+        response = requests.get(url=url)
+        response.encoding = 'utf-8'
+        soup = BeautifulSoup(response.text, 'lxml')
+        links = [link['href'] for link in soup.find_all('a', class_='name_item')]
+        
+        time.sleep(2)
 
+        for sub_link in links:
+            url = f'http://parsinger.ru/html/{sub_link}'
+            response = requests.get(url=url)
+            response.encoding = 'utf-8'
+            print(f"URL: {url}")
+            soup = BeautifulSoup(response.text, 'lxml')
+            total_span = soup.find('span', id='in_stock').text
+            price_span = soup.find('span', id='price').text
 
-
-
+            total = total_span.replace('В наличии: ', '')
+            price = price_span.replace(' руб', '')
+            print()
+            print(f"TOTAL: {total} PRICE: {price}")
+            multi = int(total) * int(price)
+            result += multi
+            print()
+            print(f"RESULT: {result}")
+            
+            time.sleep(2)
