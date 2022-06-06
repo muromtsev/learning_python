@@ -1,5 +1,6 @@
 __pycache__/
 */chromedriver/
+/selenium/stepik/selenium_env/
 *.txt
 *.html
 *.json
