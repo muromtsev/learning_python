@@ -27,8 +27,3 @@ field.send_keys(answer)
 
 btn = browser.find_element(By.CSS_SELECTOR, "button[type='submit']")
 btn.click()
-
-
-
-
-# message = browser.find_element(By.ID, "verify_message")
