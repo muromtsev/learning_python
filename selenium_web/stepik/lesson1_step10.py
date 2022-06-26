@@ -8,11 +8,16 @@ try:
     browser.get(link)
 
     # Ваш код, который заполняет обязательные поля
-    elements = browser.find_elements(By.TAG_NAME, 'label')                  # находим названия полей
-    inputs = browser.find_elements(By.CSS_SELECTOR, "input[type='text']")   # находим inputs 
-    for idx, element in enumerate(elements):
-        if element.text[-1] == '*':                                         # выбираем поля со *
-            inputs[idx].send_keys('Test')                                   # заполняем input со *
+    first_name = browser.find_element(By.CSS_SELECTOR, ".first_class input")
+    first_name.send_keys('Test')
+
+    last_name = browser.find_element(By.CSS_SELECTOR, ".second_class input")
+    last_name.send_keys('Test')
+
+    email = browser.find_element(By.CSS_SELECTOR, ".third_class input")
+    email.send_keys('Test')
+    
+                                  
 
     # Отправляем заполненную форму
     button = browser.find_element(By.CSS_SELECTOR, "button.btn")
@@ -35,4 +40,3 @@ finally:
     time.sleep(4)
     # закрываем браузер после всех манипуляций
     browser.quit()
-
