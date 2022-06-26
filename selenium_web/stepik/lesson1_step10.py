@@ -4,17 +4,15 @@ import time
 
 try: 
     link = "http://suninjuly.github.io/registration1.html"
-    options = webdriver.ChromeOptions()
-    options.add_argument("user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/99.0.4844.51 Safari/537.36")
-    browser = webdriver.Chrome(executable_path='C:\\chromedriver.exe', options=options)
-    browser.get("http://suninjuly.github.io/registration2.html")
+    browser = webdriver.Chrome()
     browser.get(link)
 
     # Ваш код, который заполняет обязательные поля
-    elements = browser.find_elements(By.TAG_NAME, 'label')
-    for element in elements:
-        if element.text[-1] == '*':
-            element.send_keys('111')
+    elements = browser.find_elements(By.TAG_NAME, 'label')                  # находим названия полей
+    inputs = browser.find_elements(By.CSS_SELECTOR, "input[type='text']")   # находим inputs 
+    for idx, element in enumerate(elements):
+        if element.text[-1] == '*':                                         # выбираем поля со *
+            inputs[idx].send_keys('Test')                                   # заполняем input со *
 
     # Отправляем заполненную форму
     button = browser.find_element(By.CSS_SELECTOR, "button.btn")
@@ -34,7 +32,7 @@ try:
 
 finally:
     # ожидание чтобы визуально оценить результаты прохождения скрипта
-    time.sleep(10)
+    time.sleep(4)
     # закрываем браузер после всех манипуляций
     browser.quit()
 
