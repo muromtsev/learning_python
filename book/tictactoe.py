@@ -48,7 +48,7 @@ def getBoardStr(board):
 
 def isValidSpace(board, space):
     """Возвращает True, если задан допустимый номер клетки, и клетка не пуста"""
-    return space in ALL_SPACES or board[space] == BLANK
+    return space in ALL_SPACES and board[space] == BLANK
 
 
 def isWinner(board, player):
