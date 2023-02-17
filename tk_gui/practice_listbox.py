@@ -7,20 +7,18 @@ lst = s.split(' ')
 
 def move_right():
     select = list(lbox_left.curselection())
-    if len(select) < 2:
-        elem = lbox_left.get(select)
-        lbox_right.insert(END, elem)
-        lbox_left.delete(select)
-    else:
-        for el in select:
-            elem = lbox_left.get(el)
-            lbox_right.insert(END, elem)
-            lbox_left.delete(el)
+    select.reverse()
+    for el in select:        
+        lbox_right.insert(END, lbox_left.get(el))
+        lbox_left.delete(el)
     
-    
-    
-    
-    
+
+def move_left():
+    select = list(lbox_right.curselection())
+    select.reverse()
+    for el in select:
+        lbox_left.insert(END, lbox_right.get(el))
+        lbox_right.delete(el)
 
 lbox_left = Listbox(selectmode=EXTENDED)
 lbox_left.pack(side=LEFT)
@@ -34,7 +32,7 @@ f.pack(side=LEFT)
 btn_right = Button(f, text='>>>', command=move_right)
 btn_right.pack()
 
-btn_left = Button(f, text='<<<')
+btn_left = Button(f, text='<<<', command=move_left)
 btn_left.pack()
 
 lbox_right = Listbox(selectmode=EXTENDED)
