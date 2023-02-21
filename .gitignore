@@ -8,4 +8,4 @@ __pycache__/
 *.svg
 *.mp4
 *.zip
-other/.zip
+other/*.zip
