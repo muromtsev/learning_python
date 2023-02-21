@@ -7,3 +7,5 @@ __pycache__/
 *.json
 *.svg
 *.mp4
+*.zip
+other/.zip
