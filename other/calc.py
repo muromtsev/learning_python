@@ -2,6 +2,7 @@ from tkinter import *
 
 root = Tk()
 root.geometry('300x300')
+root.title('Calc')
 w = root.winfo_screenwidth()
 h = root.winfo_screenheight()
 
@@ -11,97 +12,87 @@ w = w - 200
 h = h - 200
 root.geometry(f'+{w}+{h}')
 
-table = Label(text='Calc', font=("Verdana", 14), bg='white', width=200)
-table.pack(padx=10, pady=10, ipadx=5, ipady=5)
+table = Label(text='0', font=("Verdana", 14), bg='white', width=10, justify=LEFT)
+table.grid(row=0, column=0, padx=10, pady=10, ipadx=5, ipady=5)
 
 
-f0 = Frame()
-f0.pack()
 
-btn_clear = Button(f0, text='CE', bg='#cccccc', width=4, height=2)
-btn_clear.pack(side=LEFT, pady=2)
+btn_clear = Button(text='Clear', bg='#cccccc', width=4, height=2)
+btn_clear.grid(row=1, column=0, pady=2)
 
-btn_plus = Button(f0, text='+', bg='#cccccc', width=4, height=2)
-btn_plus.pack(side=LEFT, pady=2)
+btn_plus = Button( text='+', bg='#cccccc', width=4, height=2)
+btn_plus.grid(row=1, column=3, pady=2)
 
-btn_minus = Button(f0, text='-', bg='#cccccc', width=4, height=2)
-btn_minus.pack(side=LEFT, pady=2)
+btn_minus = Button(text='-', bg='#cccccc', width=4, height=2)
+btn_minus.grid(row=2, column=3, pady=2)
 
-btn_multy = Button(f0, text='*', bg='#cccccc', width=4, height=2)
-btn_multy.pack(side=LEFT, pady=2)
+btn_multy = Button(text='*', bg='#cccccc', width=4, height=2)
+btn_multy.grid(row=3, column=3, pady=2)
 
 
-f1 = Frame()
-f1.pack()
+btn_one = Button(text='1', bg='#cccccc', width=4, height=2)
+btn_one.grid(row=1, column=0, pady=2)
 
-btn_one = Button(f1, text='1', bg='#cccccc', width=4, height=2)
-btn_one.pack(side=LEFT, pady=2)
+btn_two = Button( text='2', bg='#cccccc', width=4, height=2)
+btn_two.grid(row=1, column=1, pady=2)
 
-btn_two = Button(f1, text='2', bg='#cccccc', width=4, height=2)
-btn_two.pack(side=LEFT, pady=2)
+btn_three = Button(text='3', bg='#cccccc', width=4, height=2)
+btn_three.grid(row=1, column=2, pady=2)
 
-btn_three = Button(f1, text='3', bg='#cccccc', width=4, height=2)
-btn_three.pack(side=LEFT, pady=2)
+btn_module = Button(text='/', bg='#cccccc', width=4, height=2)
+btn_module.grid(row=4, column=3, pady=2)
 
-btn_module = Button(f1, text='/', bg='#cccccc', width=4, height=2)
-btn_module.pack(side=LEFT, pady=2)
 
-f2 = Frame()
-f2.pack()
+btn_four = Button(text='4', bg='#cccccc', width=4, height=2)
+btn_four.grid(row=2, column=0, pady=2)
 
-btn_four = Button(f2, text='4', bg='#cccccc', width=4, height=2)
-btn_four.pack(side=LEFT, pady=2)
+btn_five = Button( text='5', bg='#cccccc', width=4, height=2)
+btn_five.grid(row=2, column=1, pady=2)
 
-btn_five = Button(f2, text='5', bg='#cccccc', width=4, height=2)
-btn_five.pack(side=LEFT, pady=2)
+btn_six = Button(text='6', bg='#cccccc', width=4, height=2)
+btn_six.grid(row=2, column=2, pady=2)
 
-btn_six = Button(f2, text='6', bg='#cccccc', width=4, height=2)
-btn_six.pack(side=LEFT, pady=2)
+# btn_b = Button( text=' ', bg='#cccccc', width=4, height=2)
+# btn_b.grid(row=2, column pady=2)
 
-btn_b = Button(f2, text=' ', bg='#cccccc', width=4, height=2)
-btn_b.pack(side=LEFT, pady=2)
 
-f3 = Frame()
-f3.pack()
+btn_seven = Button(text='7', bg='#cccccc', width=4, height=2)
+btn_seven.grid(row=3, column=0, pady=2)
 
-btn_seven = Button(f3, text='7', bg='#cccccc', width=4, height=2)
-btn_seven.pack(side=LEFT, pady=2)
+btn_eight = Button(text='8', bg='#cccccc', width=4, height=2)
+btn_eight.grid(row=3, column=1, pady=2)
 
-btn_eight = Button(f3, text='8', bg='#cccccc', width=4, height=2)
-btn_eight.pack(side=LEFT, pady=2)
+btn_nine = Button(text='9', bg='#cccccc', width=4, height=2)
+btn_nine.grid(row=3, column=2, pady=2)
 
-btn_nine = Button(f3, text='9', bg='#cccccc', width=4, height=2)
-btn_nine.pack(side=LEFT, pady=2)
+# btn_b1 = Button(f3, text=' ', bg='#cccccc', width=4, height=2)
+# btn_b1.pack(side=LEFT, pady=2)
 
-btn_b1 = Button(f3, text=' ', bg='#cccccc', width=4, height=2)
-btn_b1.pack(side=LEFT, pady=2)
 
-f4 = Frame()
-f4.pack()
+btn_pm = Button( text='+/-', bg='#cccccc', width=4, height=2)
+btn_pm.grid(row=5, column=0, pady=2)
 
-btn_pm = Button(f4, text='+/-', bg='#cccccc', width=4, height=2)
-btn_pm.pack(side=LEFT, pady=2)
+btn_zero = Button(text='0', bg='#cccccc', width=4, height=2)
+btn_zero.grid(row=5, column=1, pady=2)
 
-btn_zero = Button(f4, text='0', bg='#cccccc', width=4, height=2)
-btn_zero.pack(side=LEFT, pady=2)
+btn_dote = Button( text='.', bg='#cccccc', width=4, height=2)
+btn_dote.grid(row=5, column=2, pady=2)
 
-btn_dote = Button(f4, text='.', bg='#cccccc', width=4, height=2)
-btn_dote.pack(side=LEFT, pady=2)
-
-btn_eq = Button(f4, text='=', bg='#cccccc', width=4, height=2)
-btn_eq.pack(side=LEFT, pady=2)
+btn_eq = Button(text='=', bg='#cccccc', width=4, height=2)
+btn_eq.grid(row=5, column=3, pady=2)
 
 
 def deleteTable(event):
     table['text'] = ''
 
+
 def writeOne(event):
     table['text'] += btn_one['text']
 
 
-
 def writeTable(event, var):
     table['text'] += var
+
 
 def writeEq(event):
     s = table['text']
