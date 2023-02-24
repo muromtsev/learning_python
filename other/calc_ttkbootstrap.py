@@ -6,11 +6,12 @@ root.geometry('250x300')
 style = ttk.Style("darkly")
 root.resizable(False, False)
 ttk.Style().configure("TButton", font="TkFixedFont 10")
+
 # Frame Label
 frame_lbl = ttk.Frame()
 frame_lbl.grid(row=0, column=0)
 # Label
-lbl = ttk.Label(frame_lbl, text='0', bootstyle='inverse-secondary', font='TkFixedFont 15', padding=10, width=20, anchor=E)
+lbl = ttk.Label(frame_lbl, text='0', bootstyle="inverse-secondary", font='TkFixedFont 15', padding=10, width=20, anchor=E)
 lbl.grid(row=0, column=0, padx=2, pady=2)
 
 # Frame Clear
