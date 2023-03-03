@@ -18,29 +18,48 @@ fname_var = ttk.StringVar()
 lname_var = ttk.StringVar()
 email_var = ttk.StringVar()
 phone_var = ttk.StringVar()
-count = 7
+users = {}
+count = 0
+
+def create_notes(parent, first, last, email, phone, num):
+    info['text'] = f'Added'
+    return ttk.Label(parent, text=f'{first} {last} {email} {phone}').grid(row=num, column=0)
+
 
 
 def reset():
-    first_name.delete(0, END)
     fname_var.set('')
     lname_var.set('')
     email_var.set('')
-    phone_var.set(0)
+    phone_var.set('')
 
 
 def add_new_person(event):
     global count
-    user = 1
-    f = fname_var.get()
-    l = lname_var.get()
-    e = email_var.get()
-    p = phone_var.get()
+    new_fname = fname_var.get()
+    new_lname = lname_var.get()
+    new_email = email_var.get()
+    new_phone = phone_var.get()
 
-    ttk.Label(text=f'{f} {l} {e} {p}').grid(row=count, column=0)
-    info['text'] = f'Added'
-    count += 1
-    reset()
+    frame = ttk.Frame(width=50, height=10)
+    frame.grid(row=7, columnspan=2, padx=5, pady=5)
+
+    if '' not in (new_fname, new_lname, new_phone, new_email):
+        count += 1
+        users[count] = {
+            'firstname': new_fname,
+            'lastname': new_lname,
+            'email': new_email,
+            'phone': new_phone
+        }
+        c = create_notes(frame, new_fname, new_lname, new_email, new_phone, count)
+        reset()
+
+    else:
+        print('ERROR')
+
+    print(f'user: {count}')
+    print(users)
 
 
 # First name widgets
