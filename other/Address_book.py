@@ -27,17 +27,19 @@ def reset_var():
     email_var.set(value='')
     phone_var.set(value='')
 
+
 def add_new_person(event):
     new_fname = fname_var.get()
     new_lname = lname_var.get()
     new_email = email_var.get()
     new_phone = phone_var.get()
-    if new_fname != '' and new_lname != '' and new_email != '' and new_phone != '':
+    if (new_fname.isalpha() and new_fname != '') and (new_lname.isalpha() and new_lname != '') and new_email != '' and (new_phone.isdigit and new_phone != ''):
         dt.insert_row('end', values=[new_fname, new_lname, new_email, new_phone])
         dt.load_table_data()
         reset_var()
     else:
-        mb.showerror(title='Error', message='There are empty fields!!!')
+        mb.showerror(title='Error', message='Fields are not filled in correctly')
+
 
 # First name widgets
 ttk.Label(text='First name').grid(row=0, column=0, padx=10, pady=10, sticky=W)
