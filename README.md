@@ -6,3 +6,6 @@
 2. GUI [Address book](https://github.com/muromtsev/learning_python/blob/master/other/Address_book.py)
 3. GUI [Zip project](https://github.com/muromtsev/learning_python/blob/master/other/project_zip.py)
 4. Text [Tarbar](https://github.com/muromtsev/learning_python/blob/master/other/tarbar.py)
+5. API [Python Repositories](https://github.com/muromtsev/learning_python/blob/master/other/python_repos.py)
+6. [Visualisation Python Repositories](https://github.com/muromtsev/learning_python/blob/master/other/python_repos.svg) 
+
