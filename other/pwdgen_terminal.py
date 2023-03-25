@@ -5,7 +5,7 @@ import os, sys
 
 def pwdgen(lenght_pwd=10, count_pwd=10, symbols=string.ascii_letters + string.punctuation + string.digits): 
     list_pwd = []
-    while count_pwd >= 0:
+    while count_pwd > 0:
         pwd = ''
         for _ in range(lenght_pwd):
             pwd += random.choice(symbols)
@@ -52,7 +52,7 @@ def create_txt_file(date):
 while True:
     os.system('cls')
     print('----- PASSWORD GENERATOR -----')
-    
+
     show_menu()
 
     menu_id = input('> Выберите пункт меню: ')
