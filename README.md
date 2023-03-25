@@ -2,6 +2,9 @@
 ***
 ### mini progects
 
+Для проектов GUI
+*python -m pip install ttkbootstrap*
+
 1. GUI [Calculate](https://github.com/muromtsev/learning_python/blob/master/other/calc_ttkbootstrap.py)
 2. GUI [Address book](https://github.com/muromtsev/learning_python/blob/master/other/Address_book.py)
 3. GUI [Zip project](https://github.com/muromtsev/learning_python/blob/master/other/project_zip.py)
