@@ -8,6 +8,6 @@
 4. Text [Tarbar](https://github.com/muromtsev/learning_python/blob/master/other/tarbar.py)
 5. API [Python Repositories](https://github.com/muromtsev/learning_python/blob/master/other/python_repos.py)
 6. [Visualisation Python Repositories](https://github.com/muromtsev/learning_python/blob/master/other/python_repos.svg)
-7. Terminal [Password Generator](https://github.com/muromtsev/learning_python/blob/master/other/pwdgen_terminal.py.py)
+7. Terminal [Password Generator](https://github.com/muromtsev/learning_python/blob/master/other/pwdgen_terminal.py)
 8. GUI [Password Generator ttkbootstrap](https://github.com/muromtsev/learning_python/blob/master/other/pwdgen_ttkbootstrap.py)
 
