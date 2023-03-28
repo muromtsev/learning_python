@@ -36,6 +36,7 @@ def create_symbols():
     }
 
     if AMBIGUOUS_VAR.get() == 0:
+        symbol_widget.configure(state='active')
         if LATIN_VAR.get() == 1:
             if dict_symbols['ascii_letters'] == '':
                 dict_symbols['ascii_letters'] = string.ascii_letters
@@ -53,6 +54,8 @@ def create_symbols():
             dict_symbols['punctuation'] = ''
 
     elif AMBIGUOUS_VAR.get() == 1:
+        symbol_widget.configure(state='disabled')
+        dict_symbols['punctuation'] = ''
         if LATIN_VAR.get() == 1:
             if dict_symbols['ascii_letters'] == '':
                 dict_symbols['ascii_letters'] = LESS_LETTERS                
@@ -63,6 +66,7 @@ def create_symbols():
                 dict_symbols['digits'] = LESS_DIGITS
         else:
             dict_symbols['digits'] = ''
+            
     return dict_symbols
 
 
@@ -75,7 +79,6 @@ def create_list_pwd():
     while vol > 0:
         pwd = ''
         for i in range(LENGHT_VAR.get()):
-            print(i)
             pwd += random.choice(symbols)
         txt.insert(END, pwd + '\n')
         list_pwd.append(pwd)
@@ -104,7 +107,8 @@ ttk.Checkbutton(lbl_property, bootstyle="success-round-toggle", text="Латин
 
 ttk.Checkbutton(lbl_property, bootstyle="success-round-toggle", text="Цифры", state=ACTIVE, variable=DIGITS_VAR, command=create_symbols).grid(row=4, column=0, ipadx=5, ipady=5, padx=5, sticky=W)
 
-ttk.Checkbutton(lbl_property, bootstyle="success-round-toggle", text="Символы", state=ACTIVE, variable=SYMBOLS_VAR, command=create_symbols).grid(row=5, column=0, ipadx=5, ipady=5, padx=5, sticky=W)
+symbol_widget = ttk.Checkbutton(lbl_property, bootstyle="success-round-toggle", text="Символы", state=ACTIVE, variable=SYMBOLS_VAR, command=create_symbols)
+symbol_widget.grid(row=5, column=0, ipadx=5, ipady=5, padx=5, sticky=W)
 
 ttk.Checkbutton(lbl_property, bootstyle="success-round-toggle", text="Исключение (il1Lo0O)", variable=AMBIGUOUS_VAR, command=create_symbols).grid(row=6, column=0, ipadx=5, ipady=5, padx=5, sticky=W)
 
