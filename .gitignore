@@ -1,6 +1,7 @@
 __pycache__/
 */chromedriver/
 /selenium_web/stepik/selenium_env/
+/telegram_bot_api/config.py
 # PyCharm
 #  JetBrains specific template is maintained in a separate JetBrains.gitignore that can
 #  be found at https://github.com/github/gitignore/blob/main/Global/JetBrains.gitignore
@@ -23,5 +24,6 @@ venv/
 ENV/
 env.bak/
 venv.bak/
+
 !requirements.txt
 !python_repos.svg
