@@ -21,11 +21,15 @@ async def process_help_command(message: Message):
                          'я пришлю тебе твое сообщение')
 
 
-# Этот хэндлер будет срабатывать на любые ваши текстовые сообщения,
+# Этот хэндлер будет срабатывать на любые ваши сообщения,
 # кроме команд "/start" и "/help"
 @dp.message()
 async def send_echo(message: Message):
-    await message.reply(text=message.text)
+    try:
+        await message.send_copy(chat_id=message.chat.id)
+    except TypeError:
+        await message.reply(text='Данный тип апдейтов не поддерживается '
+                                 'методом send_copy')
 
 
 if __name__ == '__main__':
